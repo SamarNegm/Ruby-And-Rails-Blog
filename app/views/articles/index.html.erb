@@ -1,7 +1,11 @@
 <h1>Articles</h1>
 
-Our blog has <%= Article.public_count %> articles and counting!
+<%=  'Welcome ' + current_user.email if user_signed_in? %>
+<%=  link_to('Logout',destroy_user_session_path ,data: {
+  turbo_method: :delete})  %>
 
+<br>
+Our blog has <%= Article.public_count %> articles and counting!
 <ul>
   <% @articles.each do |article| %>
     <% unless article.archived? %>
